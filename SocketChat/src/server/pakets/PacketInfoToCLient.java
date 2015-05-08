@@ -2,6 +2,7 @@ package server.pakets;
 
 import server.client.ICLient;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,26 +13,22 @@ public class PacketInfoToCLient implements IPacket {
     public Class<? extends IPacket> getType() {
         return PacketInfoToCLient.class;
     }
+
     private Set<? extends ICLient> clients;
 
-    public PacketInfoToCLient(Set<? extends ICLient> clients){
-        this.clients=clients;
+    public PacketInfoToCLient(Set<? extends ICLient> clients) {
+        this.clients = clients;
     }
 
 
-    //TODO implement clientlist to Stringnamelist
-    public Set<String> getUsernames(){
-        return clients.forEach(c -> c.getName());
+    public Set<String> getUsernames() {
+
+        Set<String> usernames = new HashSet<>();
+
+        clients.forEach(c -> usernames.add(c.getName()));
+
+        return usernames;
     }
-
-
-
-
-
-
-
-
-
 
 
 }

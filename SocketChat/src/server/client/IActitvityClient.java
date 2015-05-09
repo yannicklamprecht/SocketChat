@@ -1,6 +1,7 @@
 package server.client;
 
 import server.pakets.IPacket;
+import server.pakets.connection.IConnectionManager;
 
 import java.net.SocketAddress;
 import java.util.UUID;
@@ -13,5 +14,5 @@ public interface IActitvityClient extends ICLient {
     UUID getID();
     void setName(String name);
     SocketAddress getAdress();
-    void sendPaket(IPacket paket);
+    IConnectionManager getConnection();
 }

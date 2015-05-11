@@ -12,6 +12,8 @@ package server;
 
 import server.pakets.IPacket;
 import server.pakets.PacketChatToClient;
+import server.pakets.connection.ConnectionManager;
+import server.pakets.connection.IConnectionManager;
 import server.pakets.connection.PacketHandler;
 
 import java.io.*;
@@ -20,62 +22,40 @@ import java.util.List;
 
 /**
  * @author yannicklamprecht
- *
  */
 public class Clients extends Thread {
 
     private List<Clients> list;
 
-    private ObjectOutputStream out;
-    private ObjectInputStream in;
-
-    private Socket soc;
+    private IConnectionManager connectionManager;
 
     public Clients(Socket connection, List<Clients> list) {
         this.list = list;
-        this.soc = connection;
-        try {
-            this.in = new ObjectInputStream(
-                    connection.getInputStream());
-            this.out = new ObjectOutputStream(connection.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        this.connectionManager = new ConnectionManager(connection);
     }
 
     public void sendMessageToCLient(String message) throws IOException {
-        out.writeObject(new PacketChatToClient(message));
+        connectionManager.sendMessage(message);
     }
 
     public void publishMessage(String message) {
         for (Clients c : list) {
             try {
                 c.sendMessageToCLient(message);
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
     public boolean isCLosed() {
-        return this.soc.isConnected();
+        return this.connectionManager.isCLosed();
     }
 
     @Override
     public void run() {
 
-        Object packet = null;
-
-        try {
-            packet = in.readObject();
-
-            while (packet != null) {
-
-
-                if(packet instanceof IPacket){
-                    PacketHandler.handler.deliverPacket((IPacket)packet);
-                }
+        PacketHandler.handler.deliverPacket(connectionManager.readPacket());
 
                 /*
                 if (message.equalsIgnoreCase("/quit")) {
@@ -89,16 +69,8 @@ public class Clients extends Thread {
                     message = reader.readLine();
                 }
             */
-            }
-
-
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
+
 }
+

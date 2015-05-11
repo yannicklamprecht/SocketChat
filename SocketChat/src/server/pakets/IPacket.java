@@ -1,5 +1,7 @@
 package server.pakets;
 
+import server.pakets.connection.IConnectionManager;
+
 import java.io.Serializable;
 
 /**
@@ -8,5 +10,7 @@ import java.io.Serializable;
 public interface IPacket extends Serializable{
 
     Class<? extends IPacket> getType();
+
+    IConnectionManager getConnectionManager();
 
 }

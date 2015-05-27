@@ -66,6 +66,6 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void sendMessage(String message) throws IOException {
-        sendPacket(new PacketChatToClient(message));
+        sendPacket(new PacketChatToClient(this,message));
     }
 }

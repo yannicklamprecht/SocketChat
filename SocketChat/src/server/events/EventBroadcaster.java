@@ -14,18 +14,18 @@ import java.util.List;
 public class EventBroadcaster implements IEventBroadcaster{
 
 
-    List<Class<? extends IListener>> listeners = new ArrayList<>();
+    private static List<Class<? extends IListener>> listeners = new ArrayList<>();
 
 
-    public synchronized void registerListener(IListener listener){
+    public static synchronized void registerListener(IListener listener){
         listeners.add(listener.getClass());
     }
 
-    public synchronized void unregisterListener(IListener listener){
+    public static synchronized void unregisterListener(IListener listener){
         listeners.remove(listener.getClass());
     }
 
-    public void callEvent(SCEvent event){
+    public static void callEvent(SCEvent event){
 
 
         //TODO check invocation of this method
@@ -33,8 +33,10 @@ public class EventBroadcaster implements IEventBroadcaster{
 
             for( Method m : listener.getClass().getMethods()){
 
-                if(m.getAnnotation(EventHandler.class) != null){
+                System.out.println(m.getName());
 
+
+                if(m.getAnnotation(EventHandler.class) != null){
                     if(m.getParameterCount()!=1)continue;
 
                     if(!event.getClass().getSimpleName().equals(m.getParameterTypes()[0].getSimpleName()))continue;

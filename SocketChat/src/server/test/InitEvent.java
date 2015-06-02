@@ -1,11 +1,11 @@
 package server.test;
 
-import server.events.callables.SCEvent;
+import server.events.callables.Event;
 
 /**
  * Created by yannick on 30.05.2015.
  */
-public class InitEvent extends SCEvent {
+public class InitEvent extends Event {
 
     private String lol;
 

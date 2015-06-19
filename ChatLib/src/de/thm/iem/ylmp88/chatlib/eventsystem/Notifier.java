@@ -1,4 +1,4 @@
-package de.thm.iem.yslmp88.chatlib.eventsystem;
+package de.thm.iem.ylmp88.chatlib.eventsystem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

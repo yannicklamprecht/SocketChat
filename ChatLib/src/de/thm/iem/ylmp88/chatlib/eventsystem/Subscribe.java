@@ -1,4 +1,4 @@
-package de.thm.iem.yslmp88.chatlib.eventsystem;
+package de.thm.iem.ylmp88.chatlib.eventsystem;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

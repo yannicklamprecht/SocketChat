@@ -1,6 +1,6 @@
 package test;
 
-import de.thm.iem.yslmp88.chatlib.eventsystem.EventSystemManager;
+import de.thm.iem.ylmp88.chatlib.eventsystem.EventSystemManager;
 
 /**
  * Created by yannick on 02.06.2015.

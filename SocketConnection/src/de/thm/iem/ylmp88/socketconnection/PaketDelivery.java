@@ -5,5 +5,5 @@ package de.thm.iem.ylmp88.socketconnection;
  */
 public interface PaketDelivery {
 
-    void deliverPaket(Paket paket);
+    void deliverPaket(Packet paket);
 }

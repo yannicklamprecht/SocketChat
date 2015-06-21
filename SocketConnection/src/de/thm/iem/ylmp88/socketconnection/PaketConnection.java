@@ -25,17 +25,17 @@ public class PaketConnection implements Closeable {
     }
 
 
-    public void writePaket(Paket paket) throws IOException {
+    public void writePaket(Packet paket) throws IOException {
         outputStream.writeObject(paket);
         outputStream.flush();
     }
 
-    public Paket readPaket() throws IOException, ClassNotFoundException {
+    public Packet readPaket() throws IOException, ClassNotFoundException {
 
         Object object = inputStream.readObject();
 
-        if (object instanceof Paket) {
-            return (Paket) object;
+        if (object instanceof Packet) {
+            return (Packet) object;
         }
 
         return null;

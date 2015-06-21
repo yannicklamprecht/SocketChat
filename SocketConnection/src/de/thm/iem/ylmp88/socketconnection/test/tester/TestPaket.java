@@ -1,11 +1,11 @@
 package de.thm.iem.ylmp88.socketconnection.test.tester;
 
-import de.thm.iem.ylmp88.socketconnection.Paket;
+import de.thm.iem.ylmp88.socketconnection.Packet;
 
 /**
  * Created by yannick on 19.06.2015.
  */
-public class TestPaket implements Paket {
+public class TestPaket implements Packet {
 
     private String message;
     private long time;

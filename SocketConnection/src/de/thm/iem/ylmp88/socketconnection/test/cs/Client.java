@@ -1,6 +1,6 @@
 package de.thm.iem.ylmp88.socketconnection.test.cs;
 
-import de.thm.iem.ylmp88.socketconnection.Paket;
+import de.thm.iem.ylmp88.socketconnection.Packet;
 import de.thm.iem.ylmp88.socketconnection.PaketConnection;
 import de.thm.iem.ylmp88.socketconnection.PaketDelivery;
 
@@ -45,7 +45,7 @@ public class Client extends Thread {
         while (connection!= null && !connection.isClosed()) {
 
             try {
-                Paket paket = connection.readPaket();
+                Packet paket = connection.readPaket();
                 paketDeliveries.parallelStream().forEach(d -> d.deliverPaket(paket));
             } catch (SocketException e) {
                 try {
@@ -69,7 +69,7 @@ public class Client extends Thread {
         }
     }
 
-    public void sendPaket(Paket paket){
+    public void sendPaket(Packet paket){
         try {
             connection.writePaket(paket);
         } catch (SocketException e) {

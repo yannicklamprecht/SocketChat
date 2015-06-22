@@ -1,8 +1,9 @@
-package de.thm.iem.ylmp88.socketconnection.test.cs;
+package test.connection.cs;
 
-import de.thm.iem.ylmp88.socketconnection.Packet;
-import de.thm.iem.ylmp88.socketconnection.PacketConnection;
-import de.thm.iem.ylmp88.socketconnection.PacketDelivery;
+
+import de.thm.iem.ylmp88.chatlib.connection.Packet;
+import de.thm.iem.ylmp88.chatlib.connection.PacketConnection;
+import de.thm.iem.ylmp88.chatlib.connection.PacketDelivery;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -45,8 +46,8 @@ public class Client extends Thread {
         while (connection!= null && !connection.isClosed()) {
 
             try {
-                Packet paket = connection.readPaket();
-                paketDeliveries.parallelStream().forEach(d -> d.deliverPaket(paket));
+                Packet paket = connection.readPacket();
+                paketDeliveries.parallelStream().forEach(d -> d.deliverPacket(paket));
             } catch (SocketException e) {
                 try {
                     connection.close();
@@ -63,15 +64,15 @@ public class Client extends Thread {
 
     }
 
-    public void registerPaketDelivery(PacketDelivery packetDelivery) {
+    public void registerPaketDelivery(PacketDelivery paketDelivery) {
         synchronized (paketDeliveries) {
-            paketDeliveries.add(packetDelivery);
+            paketDeliveries.add(paketDelivery);
         }
     }
 
     public void sendPaket(Packet paket){
         try {
-            connection.writePaket(paket);
+            connection.writePacket(paket);
         } catch (SocketException e) {
             try {
                 connection.close();

@@ -18,10 +18,6 @@ public class NonSenseEvent extends Event {
         System.out.print(test);
         System.out.print(test.length());
         System.out.print(test.toLowerCase());
-
-
-
-
     }
 
 

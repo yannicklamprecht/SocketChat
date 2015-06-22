@@ -7,13 +7,13 @@ import java.net.InetAddress;
 /**
  * Created by yannicklamprecht on 22.06.15.
  */
-public class PackteLogin implements Packet {
+public class PacketLogin implements Packet {
 
     private InetAddress address;
     private String chatName;
 
 
-    public PackteLogin(InetAddress address,String chatName){
+    public PacketLogin(InetAddress address, String chatName){
         this.address=address;
         this.chatName=chatName;
 

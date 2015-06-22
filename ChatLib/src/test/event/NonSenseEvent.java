@@ -1,11 +1,11 @@
-package test;
+package test.event;
 
 import de.thm.iem.ylmp88.chatlib.eventsystem.Event;
 
 /**
  * Created by yannick on 02.06.2015.
  */
-public class NonSenseEvent extends Event {
+public class NonSenseEvent implements Event {
 
     private String test;
 

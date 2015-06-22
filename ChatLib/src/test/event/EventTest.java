@@ -1,13 +1,11 @@
-package test;
+package test.event;
 
 import de.thm.iem.ylmp88.chatlib.eventsystem.EventSystemManager;
-import test.event.NonSenseEvent;
-import test.event.TestListener;
 
 /**
  * Created by yannick on 02.06.2015.
  */
-public class Test {
+public class EventTest {
 
 
     public static void main(String[] args){
@@ -15,5 +13,6 @@ public class Test {
         EventSystemManager.manager.registerSubscriber(TestListener.class);
 
         EventSystemManager.manager.notifySubscriber(new NonSenseEvent("ACDC goes away"));
+
     }
 }

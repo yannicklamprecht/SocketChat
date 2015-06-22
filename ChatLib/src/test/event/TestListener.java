@@ -1,4 +1,4 @@
-package test;
+package test.event;
 
 import de.thm.iem.ylmp88.chatlib.eventsystem.Subscribe;
 import de.thm.iem.ylmp88.chatlib.eventsystem.Subscriber;
@@ -9,13 +9,10 @@ import de.thm.iem.ylmp88.chatlib.eventsystem.Subscriber;
 public class TestListener implements Subscriber {
 
 
-
     @Subscribe
     public void test(NonSenseEvent event){
 
         event.doSomething();
-
-
     }
 
 

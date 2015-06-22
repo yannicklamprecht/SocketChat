@@ -30,7 +30,7 @@ public class Client extends Thread {
         }
     }
 
-    public Client(Socket socket){
+    public Client(Socket socket) {
         try {
             connection = new PacketConnection(socket);
         } catch (IOException e) {
@@ -39,11 +39,10 @@ public class Client extends Thread {
     }
 
 
-
     @Override
     public void run() {
 
-        while (connection!= null && !connection.isClosed()) {
+        while (connection != null && !connection.isClosed()) {
 
             try {
                 Packet paket = connection.readPacket();
@@ -64,13 +63,13 @@ public class Client extends Thread {
 
     }
 
-    public void registerPaketDelivery(PacketDelivery paketDelivery) {
+    public void registerPaketDelivery(PacketDelivery packetDelivery) {
         synchronized (paketDeliveries) {
-            paketDeliveries.add(paketDelivery);
+            paketDeliveries.add(packetDelivery);
         }
     }
 
-    public void sendPaket(Packet paket){
+    public void sendPaket(Packet paket) {
         try {
             connection.writePacket(paket);
         } catch (SocketException e) {
@@ -84,7 +83,7 @@ public class Client extends Thread {
         }
     }
 
-    public boolean isClosed(){
+    public boolean isClosed() {
         return connection.isClosed();
     }
 

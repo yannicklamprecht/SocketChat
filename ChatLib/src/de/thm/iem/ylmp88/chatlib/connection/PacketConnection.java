@@ -22,6 +22,8 @@ public class PacketConnection implements Closeable {
         this.socket = socket;
         this.outputStream = new ObjectOutputStream(socket.getOutputStream());
         this.inputStream = new ObjectInputStream(socket.getInputStream());
+
+
     }
 
 
@@ -50,4 +52,5 @@ public class PacketConnection implements Closeable {
     public void close() throws IOException {
         socket.close();
     }
+
 }

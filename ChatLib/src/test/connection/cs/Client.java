@@ -5,9 +5,11 @@ import de.thm.iem.ylmp88.chatlib.connection.Packet;
 import de.thm.iem.ylmp88.chatlib.connection.PacketConnection;
 import de.thm.iem.ylmp88.chatlib.connection.PacketDelivery;
 
+import java.awt.event.WindowAdapter;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +20,8 @@ public class Client extends Thread {
 
 
     private PacketConnection connection;
+    private HashMap<Class<? extends Packet>,HashSet<PacketDelivery<?extends Packet>>> packetDelivery = new HashMap<>();
+
     private Set<PacketDelivery> paketDeliveries = new HashSet<>();
 
 
@@ -47,7 +51,10 @@ public class Client extends Thread {
 
             try {
                 Packet paket = connection.readPacket();
-                paketDeliveries.parallelStream().forEach(d -> d.deliverPacket(paket));
+
+                //TODO Eventbased Packetdelivery
+
+
             } catch (SocketException e) {
                 try {
                     connection.close();
@@ -63,6 +70,8 @@ public class Client extends Thread {
 
 
     }
+
+
 
     public void registerPaketDelivery(PacketDelivery paketDelivery) {
         synchronized (paketDeliveries) {
@@ -81,6 +90,7 @@ public class Client extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 

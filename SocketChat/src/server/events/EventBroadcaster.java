@@ -14,7 +14,6 @@ public class EventBroadcaster {
     public static void callEvent(Event event) {
 
 
-        //TODO check invocation of this method
         for (Class<?> listener : Handler.getHandlers()) {
 
             for (Method m : listener.getClass().getMethods()) {

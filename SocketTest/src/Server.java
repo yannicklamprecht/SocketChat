@@ -23,7 +23,6 @@ public class Server {
         }
     }
 
-    //TODO check mistakes in original code @ChatClient/SocketChat. implement packetapi with events.
 
     public void communicate() {
         try {

@@ -1,6 +1,9 @@
-package de.thm.iem.ylmp88.socketconnection.test.tester;
+package test.connection.tester;
 
-import de.thm.iem.ylmp88.socketconnection.test.cs.Client;
+
+import de.thm.iem.ylmp88.chatlib.connection.Packet;
+import de.thm.iem.ylmp88.chatlib.connection.PacketDelivery;
+import test.connection.cs.Client;
 
 /**
  * Created by yannick on 19.06.2015.
@@ -14,13 +17,13 @@ public class TestClient {
 
         client.start();
 
-        client.registerPaketDelivery(paket -> {
-            System.out.println(paket.getClass());
+        client.registerPaketDelivery(new PacketDelivery<TestPaket>() {
+            @Override
+            public void deliverPacket(TestPaket paket) {
 
-            if (paket instanceof TestPaket){
-                System.out.println(((TestPaket)paket).getMessage());
+                System.out.println(paket.getMessage());
+
             }
-
         });
 
         while (true){

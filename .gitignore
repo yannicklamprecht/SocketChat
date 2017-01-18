@@ -83,3 +83,6 @@ gen
 .idea/modules.xml
 .idea/vcs.xml
 src/
+/ChatLib/ChatLib.iml
+/ChatClient/ChatClient.iml
+/SocketChat/SocketChatEvent.iml

@@ -1,3 +1,5 @@
+package de.ysl3000;
+
 import server.events.EventHandler;
 
 /**

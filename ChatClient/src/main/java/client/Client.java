@@ -44,7 +44,7 @@ public class Client extends Thread {
 
 		} catch (IOException e) {
 			System.out
-					.println("No connection established, server could be offline");
+					.println("No java.connection established, server could be offline");
 		}
 
 	}

@@ -1,11 +1,12 @@
-package test.event;
+package de.thm.iem.ylmp88.connection.event;
+
 
 import de.thm.iem.ylmp88.chatlib.eventsystem.EventSystemManager;
 
 /**
  * Created by yannick on 02.06.2015.
  */
-public class EventTest {
+public class Test {
 
 
     public static void main(String[] args){
@@ -13,6 +14,5 @@ public class EventTest {
         EventSystemManager.manager.registerSubscriber(TestListener.class);
 
         EventSystemManager.manager.notifySubscriber(new NonSenseEvent("ACDC goes away"));
-
     }
 }

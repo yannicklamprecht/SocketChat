@@ -1,4 +1,4 @@
-package test.connection.cs;
+package de.thm.iem.ylmp88.connection.cs;
 
 import java.io.IOException;
 import java.net.ServerSocket;

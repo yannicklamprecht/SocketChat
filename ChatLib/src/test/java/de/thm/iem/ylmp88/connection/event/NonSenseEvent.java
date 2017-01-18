@@ -1,4 +1,5 @@
-package test.event;
+package de.thm.iem.ylmp88.connection.event;
+
 
 import de.thm.iem.ylmp88.chatlib.eventsystem.Event;
 

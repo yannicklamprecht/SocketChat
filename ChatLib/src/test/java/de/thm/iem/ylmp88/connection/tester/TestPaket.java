@@ -1,6 +1,7 @@
-package de.thm.iem.ylmp88.socketconnection.test.tester;
+package de.thm.iem.ylmp88.connection.tester;
 
-import de.thm.iem.ylmp88.socketconnection.Packet;
+
+import de.thm.iem.ylmp88.chatlib.connection.Packet;
 
 /**
  * Created by yannick on 19.06.2015.

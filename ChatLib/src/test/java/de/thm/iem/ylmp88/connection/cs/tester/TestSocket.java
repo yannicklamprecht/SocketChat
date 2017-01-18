@@ -1,6 +1,7 @@
-package test.connection.tester;
+package de.thm.iem.ylmp88.connection.cs.tester;
 
-import de.thm.iem.ylmp88.socketconnection.test.cs.Server;
+
+import de.thm.iem.ylmp88.connection.cs.Server;
 
 /**
  * Created by yannick on 19.06.2015.

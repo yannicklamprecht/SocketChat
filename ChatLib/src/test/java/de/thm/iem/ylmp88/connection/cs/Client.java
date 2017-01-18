@@ -1,4 +1,4 @@
-package test.connection.cs;
+package de.thm.iem.ylmp88.connection.cs;
 
 
 import de.thm.iem.ylmp88.chatlib.connection.Packet;

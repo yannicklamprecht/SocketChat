@@ -21,7 +21,6 @@
         <module>ChatLib</module>
         <module>ChatClient</module>
         <module>SocketChat</module>
-        <module>SocketChatEvent</module>
     </modules>
 
 

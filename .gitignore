@@ -79,9 +79,7 @@ hs_err_pid*
 *.iml
 out
 gen
-.gitignore
 .idea/SocketChat.iml
 .idea/modules.xml
 .idea/vcs.xml
-pom.xml
 src/

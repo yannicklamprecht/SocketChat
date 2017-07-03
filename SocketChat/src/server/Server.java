@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,29 +30,25 @@ public class Server extends Thread {
 	public Server(int port) {
 
 		try {
-			clients = new ArrayList<Clients>();
+			clients = Collections.synchronizedList(new ArrayList<>());
 			this.server = new ServerSocket(port);
 			System.out.println("Startet");
 			start();
 			
 			
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					
-					for(Clients cl: clients){
-						if(cl.isCLosed()){
-							clients.remove(cl);
-						}
-					}
-					
-					try {
-						Thread.sleep(1000L* 60);
-					} catch (InterruptedException e) {
-					}
-				}
-			}).start();
+			new Thread(() -> {
+
+                for(Clients cl: clients){
+                    if(cl.isCLosed()){
+                        clients.remove(cl);
+                    }
+                }
+
+                try {
+                    Thread.sleep(1000L* 60);
+                } catch (InterruptedException e) {
+                }
+            }).start();
 			
 
 		} catch (IOException e) {
@@ -70,7 +67,7 @@ public class Server extends Thread {
 				System.out.println(s.getInetAddress());
 				
 				
-				Clients c = new Clients(s,clients);
+				Clients c = new Clients(s,this);
 				clients.add(c);
 				System.out.println("Client: "+ c.toString()+" hinzugefügt");
 				c.sendMessageToCLient("Du hast dich angemeldet");
@@ -79,6 +76,20 @@ public class Server extends Thread {
 				e.printStackTrace();
 			}
 		}
+	}
+
+
+	public void disconnect(Clients client){
+		try {
+			client.close();
+			clients.remove(client);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void publishMessage(String message){
+		this.clients.forEach(c -> c.sendMessageToCLient(message));
 	}
 	
 	
